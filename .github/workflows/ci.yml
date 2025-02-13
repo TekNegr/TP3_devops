@@ -1,16 +1,19 @@
 name: CI Pipeline
-  on:
-    push:
-      branches:
-        - main
-    pull_request:
-      branches:
-        - main
-  jobs:
-    build:
-      runs-on: ubuntu-latest
-      steps:
-        - name: Checkout code
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
         uses: actions/checkout@v3
 
       - name: Set up Python
@@ -53,4 +56,3 @@ name: CI Pipeline
           smtp-port: 587  
           smtp-user: ${{ secrets.SMTP_USERNAME }}
           smtp-password: ${{ secrets.SMTP_PASSWORD }}
-
