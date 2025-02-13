@@ -41,3 +41,16 @@ name: CI Pipeline
         run: |
           docker push ratshtaed/tp-flask-app:latest
 
+      - name: Notify on failure
+        if: failure()  
+        uses: dawidd6/action-send-mail@v3
+        with:
+          to: h.social74@gmail.com
+          subject: 'CI Build Failed'
+          body: |
+            The CI build has failed. Please check the details at ${{ github.event.repository.html_url }}.
+          smtp-server: smtp.example.com  
+          smtp-port: 587  
+          smtp-user: ${{ secrets.SMTP_USERNAME }}
+          smtp-password: ${{ secrets.SMTP_PASSWORD }}
+
