@@ -35,9 +35,9 @@ name: CI Pipeline
 
       - name: Build Docker image
         run: |
-          docker build -t your-docker-username/your-image-name:latest .
+          docker build -t ratshtaed/tp-flask-app:latest .
 
       - name: Push Docker image
         run: |
-          docker push your-docker-username/your-image-name:latest
+          docker push ratshtaed/tp-flask-app:latest
 
